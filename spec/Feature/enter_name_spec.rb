@@ -2,10 +2,14 @@ require 'spec_helper.rb'
 
 feature 'Enter names' do
   scenario 'submitting names' do
-    visit('/')
-    fill_in :playername1, with: 'John'
-    fill_in :playername2, with: 'Rob'
-    click_button 'Submit'
+    sign_in_and_play
     expect(page).to have_content 'John vs. Rob'
+  end
+end
+
+feature 'View hit points' do
+  scenario 'seeing player 2s hitpoints' do
+    sign_in_and_play
+    expect(page).to have_content 'Rob has 200 Hit Points'
   end
 end
